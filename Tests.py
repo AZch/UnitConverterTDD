@@ -1,4 +1,6 @@
 import unittest
 
 class TestMainConvert(unittest.TestCase):
-    pass
+    def testMakeConverter(self):
+        converter = Converter()
+        self.assertIsNotNone(converter, "converter cant be None")
