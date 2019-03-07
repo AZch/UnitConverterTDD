@@ -3,4 +3,4 @@ class Converter():
         return []
 
     def getQuantities(self):
-        return ""
+        return []
