@@ -25,3 +25,5 @@ class TestMainConvert(unittest.TestCase):
     def testAddOneQuantites_m_emptyList(self):
         converter = Converter()
         converter.addQuantities("m", [])
+
+        self.assertEqual(1, len(converter.getNames()), "count name should be 1")
