@@ -3,7 +3,7 @@ class Converter():
         pass
 
     def getNames(self):
-        return [0]
+        return ["m"]
 
     def getQuantities(self):
         return []
