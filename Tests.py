@@ -27,3 +27,4 @@ class TestMainConvert(unittest.TestCase):
         converter.addQuantities("m", [])
 
         self.assertEqual(1, len(converter.getNames()), "count name should be 1")
+        self.assertEqual("m", converter.getNames()[0], "zero elem should be m")
