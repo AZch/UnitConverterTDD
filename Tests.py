@@ -8,4 +8,4 @@ class TestMainConvert(unittest.TestCase):
 
     def testCheckQuantitiesNotNone(self):
         converter = Converter()
-        self.assertIsNotNone(converter.getNames, "names cant be None")
+        self.assertIsNotNone(converter.getNames(), "names cant be None")

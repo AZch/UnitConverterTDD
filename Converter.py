@@ -1,2 +1,3 @@
 class Converter():
-    pass
+    def getNames(self):
+        return ""
