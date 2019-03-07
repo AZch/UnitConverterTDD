@@ -13,3 +13,7 @@ class TestMainConvert(unittest.TestCase):
     def testNamesIsArr(self):
         converter = Converter()
         self.assertIsInstance(converter.getNames(), list, "name shoud be type list")
+
+    def testQuantitiesNotNone(self):
+        converter = Converter()
+        self.assertIsNotNone(converter.getQuantities(), 'quantities cant be None')
