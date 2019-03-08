@@ -73,7 +73,7 @@ class TestMainConvert(unittest.TestCase):
 
             self.assertEqual(1, converter.getQuantities()[i][i], "quant diag should be 1")
 
-    def testElemRelativeDiag100_EmptyName_randomLit(self, size = 100):
+    def testElemRelativeDiag100_EmptyName_randomList(self, size = 100):
         converter = Converter()
         for i in range(size):
             listAdd = [random.randint(0, size)] * (i)
@@ -86,3 +86,36 @@ class TestMainConvert(unittest.TestCase):
                             self.assertAlmostEqual(1, converter.getQuantities()[k][m] * converter.getQuantities()[m][k], msg="elem relative diag should be 1", delta=0.0000001)
                         else:
                             self.assertEqual(0, converter.getQuantities()[k][m] * converter.getQuantities()[m][k], msg="elem relative diag should be 0")
+
+
+    def checkSimilarWay(self, matrixBase, arrFromQuant):
+        matrixRes = [[0] * len(matrixBase) for i in range(len(matrixBase))]
+        for i in range(len(matrixBase)):
+            for j in range(len(matrixBase)):
+                matrixRes[i][j] = matrixBase[i][j]
+        for i in range(len(arrFromQuant)):
+            if arrFromQuant[i] == 0:
+                for j in range(len(arrFromQuant)):
+                    if arrFromQuant[j] != 0 and matrixRes[i][j] != 0:
+                        arrFromQuant[i] = arrFromQuant[j] / matrixRes[i][j]
+                        break
+        return matrixRes
+
+
+
+    def testSimilarWayQuant100_EmptyName_RandomListWithMoreZero(self, size = 100):
+        converter = Converter()
+        for i in range(size):
+
+            listAdd = [0] * (i)
+            for k in range(i):
+                if random.randint(0, 1) == 1:
+                    listAdd[k] = random.randint(0, size)
+            converter.addQuantities("", listAdd)
+
+            matrixRes = self.checkSimilarWay(converter.getQuantities(), listAdd)
+
+            for k in range(i + 1):
+                for m in range(i + 1):
+                    if len(matrixRes) > k:
+                        self.assertAlmostEqual(matrixRes[k][m], converter.getQuantities()[k][m], msg='elems shoud be equals (' + str(i) + ')', delta=0.0000000001)
