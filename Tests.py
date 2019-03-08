@@ -125,5 +125,5 @@ class TestMainConvert(unittest.TestCase):
             converter.addQuantities(str(i), [0] * i)
 
         for i in range(20):
-            baseName = random.randint(0, 10)
+            baseName = random.randint(0, 9)
             self.assertEqual(baseName, converter.getIdByName(str(baseName)))
