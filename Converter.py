@@ -4,7 +4,10 @@ class Converter():
         self.__quantitiesMult = []
 
     def addQuantities(self, name, arrFromQuant):
-        self.__quantitiesMult.append(arrFromQuant)
+        if len(self.__quantitiesMult) == 0:
+            self.__quantitiesMult.append([1])
+        else:
+            self.__quantitiesMult.append(arrFromQuant)
         self.__names.append(name)
 
     def getNames(self):
