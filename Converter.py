@@ -32,6 +32,9 @@ class Converter():
             else:
                 self.__quantitiesMult[i].append(0)
 
+    def transferQuant(self, indexFrom, indexTo, valTransfer):
+        return valTransfer * self.__quantitiesMult[indexFrom][indexTo]
+
     def getIdByName(self, name):
         return self.__names.index(name)
 
