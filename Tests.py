@@ -43,3 +43,8 @@ class TestMainConvert(unittest.TestCase):
             self.assertEqual(i + 1, len(converter.getNames()), "count name should be " + str(i + 1))
             self.assertEqual(name, converter.getNames()[i], "zero elem should be m")
 
+    def testNormalQuantAddOneQuantites_m_emptyList(self):
+        converter = Converter()
+        converter.addQuantities("m", [])
+
+        self.assertEqual(1, len(converter.getQuantities()), "count quantities matrix shoud be 1")
