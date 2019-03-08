@@ -48,3 +48,4 @@ class TestMainConvert(unittest.TestCase):
         converter.addQuantities("m", [])
 
         self.assertEqual(1, len(converter.getQuantities()), "count quantities matrix shoud be 1")
+        self.assertEqual(1, converter.getQuantities()[0][0], "shoud be 1")
