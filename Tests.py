@@ -63,3 +63,12 @@ class TestMainConvert(unittest.TestCase):
 
             for k in range(i + 1):
                 self.assertEqual(i + 1, len(converter.getQuantities()[k]))
+
+    def testMainDiadQuant100_EmptyName_randomList(self):
+        converter = Converter()
+        size = 100
+        for i in range(size):
+            listAdd = [random.randint(0, 100)] * (i)
+            converter.addQuantities("", listAdd)
+
+            self.assertEqual(1, converter.getQuantities()[i][i], "quant diag should be 1")
