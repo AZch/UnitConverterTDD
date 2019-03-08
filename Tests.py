@@ -1,4 +1,6 @@
 import unittest
+import string
+import random
 from Converter import Converter
 
 class TestMainConvert(unittest.TestCase):
@@ -28,3 +30,13 @@ class TestMainConvert(unittest.TestCase):
 
         self.assertEqual(1, len(converter.getNames()), "count name should be 1")
         self.assertEqual("m", converter.getNames()[0], "zero elem should be m")
+
+    def nameGenerator(self, sizeName=6, chars=string.ascii_uppercase + string.digits):
+        return ''.join(random.choice(chars) for _ in range(sizeName))
+
+    def testCheckName100_Random100_emptyList(self):
+        converter = Converter()
+        size = 100
+        for i in range(size):
+            converter.addQuantities(self.nameGenerator(), [])
+            self.assertEqual(i + 1, len(converter.getNames()), "count name should be " + str(i + 1))
