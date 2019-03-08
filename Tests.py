@@ -34,9 +34,12 @@ class TestMainConvert(unittest.TestCase):
     def nameGenerator(self, sizeName=6, chars=string.ascii_uppercase + string.digits):
         return ''.join(random.choice(chars) for _ in range(sizeName))
 
-    def testCheckName100_Random100_emptyList(self):
+    def testCheckName100_Random_emptyList(self):
         converter = Converter()
         size = 100
         for i in range(size):
-            converter.addQuantities(self.nameGenerator(), [])
+            name = self.nameGenerator()
+            converter.addQuantities(name, [])
             self.assertEqual(i + 1, len(converter.getNames()), "count name should be " + str(i + 1))
+            self.assertEqual(name, converter.getNames()[i], "zero elem should be m")
+
