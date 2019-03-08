@@ -49,3 +49,14 @@ class TestMainConvert(unittest.TestCase):
 
         self.assertEqual(1, len(converter.getQuantities()), "count quantities matrix shoud be 1")
         self.assertEqual(1, converter.getQuantities()[0][0], "shoud be 1")
+
+    def testCheckQunat100_RandomName_randomList(self):
+        converter = Converter()
+        size = 100
+        for i in range(size):
+            name = self.nameGenerator()
+            converter.addQuantities(name, [random.randint(0, 100)] * (i + 1))
+            self.assertEqual(i + 1, len(converter.getNames()), "count name should be " + str(i + 1))
+            self.assertEqual(name, converter.getNames()[i], "zero elem should be m")
+
+            self.assertEqual(i + 1, len(converter.getQuantities()), "count quant should be " + str(i + 1))
