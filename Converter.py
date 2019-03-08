@@ -1,9 +1,12 @@
 class Converter():
+    def __init__(self):
+        self.__names = []
+
     def addQuantities(self, name, arrFromQuant):
-        pass
+        self.__names.append(name)
 
     def getNames(self):
-        return ["m"]
+        return self.__names
 
     def getQuantities(self):
         return []
