@@ -9,4 +9,4 @@ class Converter():
         return self.__names
 
     def getQuantities(self):
-        return [0]
+        return [[1]]
