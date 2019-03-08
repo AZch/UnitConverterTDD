@@ -13,7 +13,10 @@ class Converter():
                 arrFromQuant.append(1)
             self.__quantitiesMult.append(arrFromQuant)
             for i in range(len(self.__quantitiesMult) - 1):
-                self.__quantitiesMult[i].append(0)
+                if len(arrFromQuant) > i and arrFromQuant[i] != 0:
+                    self.__quantitiesMult[i].append(1 / arrFromQuant[i])
+                else:
+                    self.__quantitiesMult[i].append(0)
         self.__names.append(name)
 
     def getNames(self):
