@@ -12,12 +12,15 @@ class Converter():
             else:
                 arrFromQuant.append(1)
             self.__quantitiesMult.append(arrFromQuant)
-            for i in range(len(self.__quantitiesMult) - 1):
-                if len(arrFromQuant) > i and arrFromQuant[i] != 0:
-                    self.__quantitiesMult[i].append(1 / arrFromQuant[i])
-                else:
-                    self.__quantitiesMult[i].append(0)
+            self.appendNewWay(arrFromQuant)
         self.__names.append(name)
+
+    def appendNewWay(self, arrFromQuant):
+        for i in range(len(self.__quantitiesMult) - 1):
+            if len(arrFromQuant) > i and arrFromQuant[i] != 0:
+                self.__quantitiesMult[i].append(1 / arrFromQuant[i])
+            else:
+                self.__quantitiesMult[i].append(0)
 
     def getNames(self):
         return self.__names
