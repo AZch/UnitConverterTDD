@@ -118,3 +118,12 @@ class TestMainConvert(unittest.TestCase):
             for k in range(i + 1):
                 if len(arrTest) > 0:
                     self.assertAlmostEqual(arrTest[k], converter.getQuantities()[len(converter.getQuantities()) - 1][k], msg='elems shoud be equals (' + str(i) + ')', delta=0.0000000001)
+
+    def testGetIdByName_10_NumName_ZeroParams(self):
+        converter = Converter()
+        for i in range(10):
+            converter.addQuantities(str(i), [0] * i)
+
+        for i in range(20):
+            baseName = random.randint(0, 10)
+            self.assertEqual(baseName, converter.getIdByName(str(baseName)))
