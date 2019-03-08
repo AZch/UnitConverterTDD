@@ -127,3 +127,14 @@ class TestMainConvert(unittest.TestCase):
         for i in range(20):
             baseName = random.randint(0, 9)
             self.assertEqual(baseName, converter.getIdByName(str(baseName)))
+
+    def testTransferQuant100_RandomValue(self):
+        converter = Converter()
+        for i in range(100):
+            converter.addQuantities(str(i), [random.randint(0, 100)] * i)
+
+        for i in range(1000):
+            valueTest = random.randint(0, 1000) + random.random()
+            indexFrom = random.randint(0, len(converter.getQuantities()) - 1)
+            indexTo = random.randint(0, len(converter.getQuantities()) - 1)
+            self.assertAlmostEqual(valueTest * converter.getQuantities()[indexFrom][indexTo], converter.transferQuant(indexFrom, indexTo, valueTest))
