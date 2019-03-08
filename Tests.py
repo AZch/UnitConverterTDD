@@ -89,17 +89,18 @@ class TestMainConvert(unittest.TestCase):
 
 
     def checkSimilarWay(self, matrixBase, arrFromQuant):
-        matrixRes = [[0] * len(matrixBase) for i in range(len(matrixBase))]
-        for i in range(len(matrixBase)):
-            for j in range(len(matrixBase)):
-                matrixRes[i][j] = matrixBase[i][j]
+        resArr = [0] * len(arrFromQuant)
         for i in range(len(arrFromQuant)):
-            if arrFromQuant[i] == 0:
-                for j in range(len(arrFromQuant)):
-                    if arrFromQuant[j] != 0 and matrixRes[i][j] != 0:
-                        arrFromQuant[i] = arrFromQuant[j] / matrixRes[i][j]
+            resArr[i] = arrFromQuant[i]
+
+        for i in range(len(resArr)):
+            if resArr[i] == 0:
+                for j in range(len(resArr)):
+                    if resArr[j] != 0 and matrixBase[i][j] != 0:
+                        resArr[i] = resArr[j] / matrixBase[i][j]
                         break
-        return matrixRes
+        resArr.append(1)
+        return resArr
 
 
 
@@ -111,11 +112,9 @@ class TestMainConvert(unittest.TestCase):
             for k in range(i):
                 if random.randint(0, 1) == 1:
                     listAdd[k] = random.randint(0, size)
+            arrTest = self.checkSimilarWay(converter.getQuantities(), listAdd)
             converter.addQuantities("", listAdd)
 
-            matrixRes = self.checkSimilarWay(converter.getQuantities(), listAdd)
-
             for k in range(i + 1):
-                for m in range(i + 1):
-                    if len(matrixRes) > k:
-                        self.assertAlmostEqual(matrixRes[k][m], converter.getQuantities()[k][m], msg='elems shoud be equals (' + str(i) + ')', delta=0.0000000001)
+                if len(arrTest) > 0:
+                    self.assertAlmostEqual(arrTest[k], converter.getQuantities()[len(converter.getQuantities()) - 1][k], msg='elems shoud be equals (' + str(i) + ')', delta=0.0000000001)
