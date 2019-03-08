@@ -32,6 +32,9 @@ class Converter():
             else:
                 self.__quantitiesMult[i].append(0)
 
+    def getIdByName(self, name):
+        return self.__names.index(name)
+
     def getNames(self):
         return self.__names
 
