@@ -8,6 +8,8 @@ class Converter():
             self.__quantitiesMult.append([1])
         else:
             self.__quantitiesMult.append(arrFromQuant)
+            for i in range(len(self.__quantitiesMult) - 1):
+                self.__quantitiesMult[i].append(0)
         self.__names.append(name)
 
     def getNames(self):
