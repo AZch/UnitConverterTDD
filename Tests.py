@@ -60,3 +60,6 @@ class TestMainConvert(unittest.TestCase):
             self.assertEqual(name, converter.getNames()[i], "zero elem should be m")
 
             self.assertEqual(i + 1, len(converter.getQuantities()), "count quant should be " + str(i + 1))
+
+            for k in range(i + 1):
+                self.assertEqual(i + 1, len(converter.getQuantities()[k]))
