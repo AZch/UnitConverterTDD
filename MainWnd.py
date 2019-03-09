@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.SIConvTo = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.SIConvTo.setGeometry(QtCore.QRect(290, 40, 121, 26))
         self.SIConvTo.setDecimals(323)
-        self.SIConvTo.setMaximum(1e+25)
+        self.SIConvTo.setMaximum(1e+16)
         self.SIConvTo.setObjectName("SIConvTo")
         self.label_15 = QtWidgets.QLabel(self.centralwidget)
         self.label_15.setGeometry(QtCore.QRect(140, 40, 141, 17))
